@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-content-wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.main-img-wrapper {
+    width: 50%;
+    height: 100vh;
+    background-color: aliceblue;
+    position: relative;
+    overflow: hidden; /* Ensures images stay within the container */
+}
+
+.main-img-wrapper img {
+    position: absolute;
+    left: 0;
+    width: 90%;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    display: flex;
+}
+
+.main-img-wrapper img:nth-child(1) {
+    top: 0;
+    z-index: 5; /* First image starts at the top */
+}
+
+.main-img-wrapper img:nth-child(2) {
+    top: calc(20% - 10px);/* Reduced gap for the second image */
+    z-index: 4; 
+}
+
+.main-img-wrapper img:nth-child(3) {
+    top: calc(30% - 10px); /* Adjusted for the third image */
+    z-index: 3; 
+}
+
+.main-img-wrapper img:nth-child(4) {
+    top: calc(40% - 30px); /* Adjusted for the fourth image */
+    z-index: 2; 
+
+}
+
+.main-img-wrapper img:nth-child(5) {
+    top: calc(55% - 30px); /* Adjusted for the fourth image */
+    z-index: 1; 
+
+}
+
+
+/* Hover effect to move the first image upward and others downward */
+.main-img-wrapper img:hover:nth-child(1) {
+    transform: translateY(-32px); /* Move first image upward */
+}
+
+.main-img-wrapper img:hover:nth-child(2)  {
+    transform: translateY(32px); 
+}
+
+.main-img-wrapper img:hover:nth-child(3)  {
+    transform: translateY(32px); 
+}
+
+
+.main-img-wrapper img:hover:nth-child(4)  {
+    transform: translateY(55px); 
+}
+
+.main-img-wrapper img:hover:nth-child(5)  {
+    transform: translateY(55px); 
+}
+
+
+
+.main-layers-description-wrapper {
+    width: 50%;
+    height: auto;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 5px solid white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal .close {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="main-content-wrapper">
+        <div class="main-img-wrapper">
+            <img src="https://spinecure.co.in/cdn/shop/files/Layer_1.png?v=1704353586&width=1101" alt="Layer 1">
+            <img src="https://spinecure.co.in/cdn/shop/files/Layer_2.png?v=1704353742&width=1088" alt="Layer 2">
+        <img src="https://spinecure.co.in/cdn/shop/files/Layer_3.png?v=1704353890&width=1101" alt="Layer 3">
+        <img src="https://spinecure.co.in/cdn/shop/files/Layer_4.png?v=1704353910&width=1093" alt="Layer 4">
+    <img src="https://spinecure.co.in/cdn/shop/files/Layer_5.png?v=1704353983&width=1126" alt="Layer 5">    
+    </div>
+        <div class="main-layers-description-wrapper">
+            <p id="layer-description">This is the text 1</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img id="modalImage" src="" alt="Popup Image">
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const description = document.getElementById('layer-description');
+
+        // Add hover event to all images to update the text
+        const imageDescriptions = [
+            'This is the text 1',
+            'This is the text 2',
+            'This is the text 3',
+            'This is the text 4'
+        ];
+
+        document.querySelectorAll('.main-img-wrapper img').forEach((img, index) => {
+            img.addEventListener('mouseenter', () => {
+                description.textContent = imageDescriptions[index]; // Change the text based on the hovered image
+            });
+        });
+
+        // Add click event to all images for the modal
+        document.querySelectorAll('.main-img-wrapper img').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src; // Set the clicked image as the modal image
+                modal.style.display = 'flex'; // Show the modal
+            });
+        });
+
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = 'none'; // Hide the modal
+        }
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImage) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
