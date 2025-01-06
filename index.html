@@ -14,12 +14,14 @@
 .main-content-wrapper {
     width: 100%;
     display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .main-img-wrapper {
     width: 50%;
+    margin: 40px;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: white;
     position: relative;
     overflow: hidden; /* Ensures images stay within the container */
 }
@@ -88,12 +90,14 @@
 .main-layers-description-wrapper {
     width: 50%;
     height: auto;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     color: #333;
+    text-align: center;
 }
 
 /* Modal styles */
@@ -138,7 +142,10 @@
     <img src="https://spinecure.co.in/cdn/shop/files/Layer_5.png?v=1704353983&width=1126" alt="Layer 5">    
     </div>
         <div class="main-layers-description-wrapper">
-            <p id="layer-description">This is the text 1</p>
+            <h1>Our matresses</h1>
+            <div id="layer-description">
+                <h5>This is heading one</h5>
+                <p>This is the text 1</p></div>
         </div>
     </div>
 
@@ -155,17 +162,18 @@
 
         // Add hover event to all images to update the text
         const imageDescriptions = [
-            'This is the text 1',
-            'This is the text 2',
-            'This is the text 3',
-            'This is the text 4'
-        ];
+    '<h5>This is heading one</h5><p>This is the text 1</p>',
+    '<h5>This is heading two</h5><p>This is the text 2</p>',
+    '<h5>This is heading three</h5><p>This is the text 3</p>',
+    '<h5>This is heading four</h5><p>This is the text 4</p>',
+    '<h5>This is heading five</h5><p>This is the text 5</p>'
+];
 
-        document.querySelectorAll('.main-img-wrapper img').forEach((img, index) => {
-            img.addEventListener('mouseenter', () => {
-                description.textContent = imageDescriptions[index]; // Change the text based on the hovered image
-            });
-        });
+document.querySelectorAll('.main-img-wrapper img').forEach((img, index) => {
+    img.addEventListener('mouseenter', () => {
+        description.innerHTML = imageDescriptions[index]; // Update HTML content dynamically
+    });
+});
 
         // Add click event to all images for the modal
         document.querySelectorAll('.main-img-wrapper img').forEach(img => {
