@@ -90,15 +90,32 @@
 .main-layers-description-wrapper {
     width: 50%;
     height: auto;
-    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     font-size: 1.5rem;
     color: #333;
-    text-align: center;
+    text-align: left;
+    margin: 20px;
+    gap: 10px;
 }
+
+#layer-description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+#layer-description img{
+    width: 350px;
+    border-radius: 10px;
+}
+
+#layer-description p{
+    font-size: 15px;
+}
+
 
 /* Modal styles */
 .modal {
@@ -142,12 +159,20 @@
     <img src="https://spinecure.co.in/cdn/shop/files/Layer_5.png?v=1704353983&width=1126" alt="Layer 5">    
     </div>
         <div class="main-layers-description-wrapper">
-            <h1>Our matresses</h1>
+            <h2>Our matresses</h2>
+            <div id="layer-description-image">
+                
+            </div>
+
             <div id="layer-description">
+                <div class="main-side-desc-img-wrapper">
                 <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_1_570x.png?v=1704344421">
+                </div>
                 <h5>This is heading one</h5>
-                <p>This is the text 1</p></div>
-        </div>
+                <p>Conforms to the body, relieving pressure points and reducing discomfort. Conforms to the body, relieving pressure points and reducing discomfort.Conforms to the body, relieving pressure points and reducing discomfort.</p>
+            </div>
+            </div>
+            </div>
     </div>
 
     <!-- Modal -->
@@ -163,11 +188,11 @@
 
         // Add hover event to all images to update the text
         const imageDescriptions = [
-    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_1_570x.png?v=1704344421"> <h5>This is heading one</h5><p>This is the text 1</p>',
-    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_2_570x.png?v=1704344463"> <h5>This is heading two</h5><p>This is the text 2</p>',
-    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_3_570x.png?v=1704344488"> <h5>This is heading three</h5><p>This is the text 3</p>',
-    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_1_570x.png?v=1704344421"> <h5>This is heading four</h5><p>This is the text 4</p>',
-    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_2_570x.png?v=1704344463"> <h5>This is heading five</h5><p>This is the text 5</p>'
+    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_1_570x.png?v=1704344421"> <h5>This is heading one</h5><p>Conforms to the body, relieving pressure points and reducing discomfort. Conforms to the body, relieving pressure points and reducing discomfort.Conforms to the body, relieving pressure points and reducing discomfort.</p>',
+    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_2_570x.png?v=1704344463"> <h5>This is heading two</h5><p>Conforms to the body, relieving pressure points and reducing discomfort. Conforms to the body, relieving pressure points and reducing discomfort, relieving pressure points and reducing discomfort.</p>',
+    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_3_570x.png?v=1704344488"> <h5>This is heading three</h5><p>Conforms to the body, relieving pressure points and reducing discomfort. Conforms to the body, relieving pressure points and reducing discomfort.Conforms to the body, relieving pressure points and reducing discomfort.</p>',
+    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_1_570x.png?v=1704344421"> <h5>This is heading four</h5><p>Conforms to the body, relieving pressure points and reducing discomfort. Conforms to the body, relieving pressure points and reducing discomfort.Conforms to the body</p>',
+    ' <img src="https://spinecure.co.in/cdn/shop/files/SpineOpedic_2_570x.png?v=1704344463"> <h5>This is heading five</h5><p>Conforms to the body, relieving pressure points and reducing discomfort. Conforms to the body, relieving pressure points and reducing discomfort.Conforms to the body, relieving pressure points and reducing discomfort.</p>'
 ];
 
 document.querySelectorAll('.main-img-wrapper img').forEach((img, index) => {
